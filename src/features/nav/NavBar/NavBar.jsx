@@ -8,7 +8,7 @@ export default class NavBar extends Component {
               {/* fixed="top" */}
                 <Container>
                   <Menu.Item header>
-                    <img src="assets/logo.png" alt="logo" />
+                    <img src="/assets/logo.png" alt="logo" />
                     Upshot
                   </Menu.Item>
                   <Menu.Item name="Events" />
