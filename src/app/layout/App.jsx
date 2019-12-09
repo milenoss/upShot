@@ -8,8 +8,8 @@ class App extends Component {
   return (
     <Fragment>
     <NavBar/>
-
-    <Container className>
+    
+    <Container>
       <EventDashboard/>
       
     </Container>
