@@ -1,9 +1,11 @@
 import React from 'react'
 
-export const SettingsNav = () => {
+ const PhotosPage = () => {
     return (
         <div>
             
         </div>
     )
 }
+
+export default PhotosPage;

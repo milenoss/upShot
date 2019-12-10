@@ -1,9 +1,10 @@
 import React from 'react'
 
-export const BasicPage = () => {
+ const PeopleDashboard = () => {
     return (
         <div>
             
         </div>
     )
 }
+export default PeopleDashboard;

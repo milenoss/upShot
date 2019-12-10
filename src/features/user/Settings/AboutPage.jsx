@@ -1,9 +1,11 @@
 import React from 'react'
 
-export const PeopleDashboard = () => {
+const AboutPage = () => {
     return (
         <div>
             
         </div>
     )
 }
+
+export default AboutPage;

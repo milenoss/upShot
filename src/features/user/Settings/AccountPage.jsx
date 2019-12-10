@@ -1,9 +1,11 @@
 import React from 'react'
 
-export const HomePage = () => {
+const AccountPage = () => {
     return (
         <div>
             
         </div>
     )
 }
+
+export default AccountPage;

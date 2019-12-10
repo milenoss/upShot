@@ -1,9 +1,11 @@
 import React from 'react'
 
-export const EventDetailPage = () => {
+const EventDetailedPage = () => {
     return (
         <div>
            <h1>Event Detail Page</h1> 
         </div>
     )
 }
+
+export default EventDetailedPage;
