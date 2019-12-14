@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import {Segment, Form, Button, Grid, Header, TextArea} from 'semantic-ui-react'
+import {Segment, Form, Button, Grid, Header} from 'semantic-ui-react'
 import {reduxForm, Field} from 'redux-form';
 import {connect} from 'react-redux';
 import {composeValidators, combineValidators, isRequired, hasLengthGreaterThan} from 'revalidate';
@@ -7,6 +7,7 @@ import {createEvent, updateEvent} from '../eventAction';
 import cuid from 'cuid';
 import { TextInput } from '../../../app/common/form/TextInput';
 import { SelectInput } from '../../../app/common/form/SelectInput';
+import { TextArea }from '../../../app/common/form/TextArea';
 
 const mapState = (state, ownProps) => { 
   const eventId = ownProps.match.params.id;
@@ -80,6 +81,7 @@ const mapState = (state, ownProps) => {
                     <Form onSubmit={this.props.handleSubmit(this.onFormSubmit)}autoComplete='off'>
                       <Field 
                       name='title' 
+                      type ='text'
                       component={TextInput}
                       placeholder='Give your event a name'/>
                       <Field 
@@ -92,14 +94,28 @@ const mapState = (state, ownProps) => {
 
                       <Field 
                       name='description' 
+                      type='text'
                       component={TextArea} 
                       rows = {3}
                       placeholder='Tell us about your event'/>
                       
                       <Header sub color='blue' content= 'Event Location Details'></Header>
-                      <Field name='city' component={TextInput} placeholder='Event City'/>
-                      <Field name='venue' component={TextInput} placeholder='Event Venue'/>
-                      <Field name='date' component={TextInput} placeholder='Event Date '/>
+
+                      <Field 
+                      name='city' 
+                      type = 'text'
+                      component={TextInput} 
+                      placeholder='Event City'/>
+                      <Field
+                       name='venue' 
+                       type= 'text'
+                       component={TextInput} 
+                       placeholder='Event Venue'/>
+                      <Field 
+                      name='date'
+                      type = 'text'
+                       component={TextInput} 
+                       placeholder='Event Date'/>
 
                       <Button positive type="submit">
                         Submit
