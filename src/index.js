@@ -9,7 +9,7 @@ import {configureStore} from './app/store/configureStore';
 import ScrollToTop from './app/common/ScrollToTop'
 
 const store = configureStore(); 
-console.log(store.getState())
+// console.log(store.getState())
 
 
 ReactDOM.render(
