@@ -6,7 +6,7 @@ import {Container} from 'semantic-ui-react';
 import {Route, Switch} from 'react-router-dom';
 import HomePage from '../../features/home/HomePage';
 import EventDetailedPage from '../../features/event/EventDetailed/EventDetailedPage';
-
+import Auth from '../../features/auth/Auth'
 import PeopleDashboard from '../../features/user/PeopleDashboard/PeopleDashboard';
 import SettingsDashboard from '../../features/user/Settings/SettingsDashboard';
 import UserDetailedPage from '../../features/user/UserDetailed/UserDetailedPage';
@@ -25,6 +25,7 @@ class App extends Component {
                
               <Container>
                 <Switch >
+                <Route exact path ='/login' component={Auth}/>
                 <Route exact path='/events' component={EventDashboard}/>
                 <Route path='/events/:id' component={EventDetailedPage}/>
                 <Route path='/people' component={PeopleDashboard}/>
