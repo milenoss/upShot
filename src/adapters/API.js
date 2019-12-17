@@ -1,8 +1,10 @@
 const API_ENDPOINT ='http://localhost:3000/api/v1/';
 const LOGIN_URL = `${API_ENDPOINT}login`;
-// const SIGNUP_URL = `${API_ENDPOINT}users`;
-// const EVENTS_URL = `${API_ENDPOINT}events`;
+const SIGNUP_URL = `${API_ENDPOINT}users`;
+const EVENTS_URL = `${API_ENDPOINT}events`;
 // const EVENT_URL = `${API_ENDPOINT}events/${event.id}`;
+
+
 
 const jsonify = res => { 
     return res.json()
@@ -29,10 +31,8 @@ const login = (userDetails) => fetch(LOGIN_URL,{
 })
     
 
-    // data => { 
-    //     localStorage.setItem('token', data.token);
-    //     return data.user
-// })
+
+
 
 export default { 
     login

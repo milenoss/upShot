@@ -73,6 +73,12 @@ const mapState = (state, ownProps) => {
         }
     }
 
+    // myHandleSubmit = () => {
+
+
+    //   this.props.handleSubmit(this.onFormSubmit)
+    // }
+
    
     render() {
         const {history, initialValues, invalid, submitting, pristine} = this.props
