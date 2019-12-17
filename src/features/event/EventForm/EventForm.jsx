@@ -1,3 +1,6 @@
+
+/*global google*/
+
 import React, { Component } from 'react'
 import {Segment, Form, Button, Grid, Header} from 'semantic-ui-react'
 import {reduxForm, Field} from 'redux-form';
@@ -9,6 +12,12 @@ import { TextInput } from '../../../app/common/form/TextInput';
 import { SelectInput } from '../../../app/common/form/SelectInput';
 import { TextArea }from '../../../app/common/form/TextArea';
 import DateInput from '../../../app/common/form/DateInput';
+import PlaceInput from '../../../app/common/form/PlaceInput';
+// import {geocodeByAddress, getLatLng} from 'react-places-autocomplete'
+import  {
+  geocodeByAddress,
+  getLatLng
+} from 'react-places-autocomplete';
 
 const mapState = (state, ownProps) => { 
   const eventId = ownProps.match.params.id;
@@ -54,9 +63,13 @@ const mapState = (state, ownProps) => {
 
 
  class EventForm extends Component {
-
+   state = {
+     cityLatlng: {},
+   venueLatlng:{}
+   }
   //we getting our values from redux forms now
       onFormSubmit = values => { 
+        values.venueLatLng = this.state.venueLatlng
         if (this.props.initialValues.id){ 
             this.props.updateEvent(values);
             this.props.history.push(`/events/${this.props.initialValues.id}`);
@@ -73,11 +86,35 @@ const mapState = (state, ownProps) => {
         }
     }
 
-    // myHandleSubmit = () => {
+      handleCitySelect = selectedCity => { 
+        geocodeByAddress(selectedCity)
+        .then(results => getLatLng(results[0]))
+        .then(latlng => { 
+          this.setState({
+               cityLatlng: latlng
+          })
+        })
+        .then(() => { 
+          this.props.change('city', selectedCity)
+        })
+      }
+
+      handleVenueSelect = selectedVenue => { 
+        geocodeByAddress(selectedVenue)
+        .then(results => getLatLng(results[0]))
+        .then(latlng => { 
+          this.setState({
+            venueLatlng: latlng
+          })
+        })
+        .then(() => { 
+          this.props.change('venue', selectedVenue)
+        })
+      }
 
 
-    //   this.props.handleSubmit(this.onFormSubmit)
-    // }
+
+
 
    
     render() {
@@ -112,12 +149,21 @@ const mapState = (state, ownProps) => {
                       <Field 
                       name='city' 
                       type = 'text'
-                      component={TextInput} 
+                      component={PlaceInput}
+                      options={{types:['(cities)']}}
+                      onSelect={this.handleCitySelect}
                       placeholder='Event City'/>
                       <Field
                        name='venue' 
                        type= 'text'
-                       component={TextInput} 
+                       component={PlaceInput}
+                       options={{
+                         location: new google.maps.LatLng(this.state.cityLatLng), 
+                         radius: 1000, 
+                         types: ['establishment']
+                          
+                       }} 
+                       onSelect={this.handleVenueSelect}
                        placeholder='Event Venue'/>
                       <Field 
                       name='date'
