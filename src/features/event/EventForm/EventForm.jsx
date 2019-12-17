@@ -8,6 +8,7 @@ import cuid from 'cuid';
 import { TextInput } from '../../../app/common/form/TextInput';
 import { SelectInput } from '../../../app/common/form/SelectInput';
 import { TextArea }from '../../../app/common/form/TextArea';
+import DateInput from '../../../app/common/form/DateInput';
 
 const mapState = (state, ownProps) => { 
   const eventId = ownProps.match.params.id;
@@ -37,7 +38,8 @@ const mapState = (state, ownProps) => {
     hasLengthGreaterThan(4)({message: 'Description needs to be at least 5 characters'})
   )(), 
   city: isRequired('city'),
-  venue: isRequired('venue')
+  venue: isRequired('venue'),
+  date: isRequired('date')
  })
 
 
@@ -73,7 +75,7 @@ const mapState = (state, ownProps) => {
 
    
     render() {
-        const {history, initialValues} = this.props
+        const {history, initialValues, invalid, submitting, pristine} = this.props
         return (
           <Grid.Column width={6}>
                     <Segment>
@@ -114,10 +116,13 @@ const mapState = (state, ownProps) => {
                       <Field 
                       name='date'
                       type = 'text'
-                       component={TextInput} 
+                       component={TextInput} ///fixing needed
+                       dateFormat= 'dd LLL yyyy h:mm a'
+                       showTimeSelect
+                       timeFormat = 'HH:mm'
                        placeholder='Event Date'/>
 
-                      <Button positive type="submit">
+                      <Button disabled={invalid || submitting || pristine} positive type="submit">
                         Submit
                       </Button>
                       <Button onClick={
