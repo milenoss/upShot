@@ -1,4 +1,4 @@
-import React, {Component, Fragment} from 'react';
+import React, {Component, Fragment } from 'react';
 
 import EventDashboard from '../../features/event/EventDashboard/EventDashboard';
 import NavBar from '../../features/nav/NavBar/NavBar';
@@ -12,9 +12,30 @@ import SettingsDashboard from '../../features/user/Settings/SettingsDashboard';
 import UserDetailedPage from '../../features/user/UserDetailed/UserDetailedPage';
 import EventForm from'../../features/event/EventForm/EventForm';
 import TestComponent from '../../features/testArea/TestComponent'
+
+
 class App extends Component {
+
+    state = { 
+
+      user: []
+ }
+  
+   
+  
+
+
   render(){
+    
+    const newUser = () => { 
+      this.setState({ 
+        user: null
+      })
+    }
+   
+    
   return (
+
     <Fragment>
             <Route exact path='/' component={HomePage}/>
             <Route
@@ -25,7 +46,7 @@ class App extends Component {
                
               <Container>
                 <Switch >
-                <Route exact path ='/login' component={Auth}/>
+                <Route exact path ='/auth/login' component={routerProps => <Auth{...routerProps} newUser={newUser}/>}/>
                 <Route exact path='/events' component={EventDashboard}/>
                 <Route path='/events/:id' component={EventDetailedPage}/>
                 <Route path='/people' component={PeopleDashboard}/>
