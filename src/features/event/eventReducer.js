@@ -1,6 +1,5 @@
 import { createReducer } from "../../app/common/reducerUtils"
 import { CREATE_EVENT, DELETE_EVENT, UPDATE_EVENT } from './eventConstant';
-
  const initialState = [
     {
       id: '1',
@@ -42,7 +41,7 @@ import { CREATE_EVENT, DELETE_EVENT, UPDATE_EVENT } from './eventConstant';
         lng: -0.12300089999996544
       },
       hostedBy: 'Tom',
-      hostPhotoURL: 'https://randomuser.me/api/portraits/men/22.jpg',
+      hostPhotoURL: 'public/assets/IMG_2543.jpg',
       attendees: [
         {
           id: 'a',
