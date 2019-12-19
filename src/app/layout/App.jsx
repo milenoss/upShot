@@ -18,25 +18,25 @@ import ModalManager from '../../features/modals/ModalManager';
 
 class App extends Component {
 
-    state = { 
+//     state = { 
 
-      user: []
- }
+//       user: []
+//  }
   
   
- componentDidMount() {
-   API.fetchEvents().then(console.log)
- }
+//  componentDidMount() {
+//    API.fetchEvents().then(console.log)
+//  }
   
 
 
   render(){
     
-    const newUser = () => { 
-      this.setState({ 
-        user: null
-      })
-    }
+    // const newUser = () => { 
+    //   this.setState({ 
+    //     user: null
+    //   })
+    // }
    
     
   return (
@@ -52,7 +52,7 @@ class App extends Component {
                
               <Container>
                 <Switch >
-                <Route exact path ='/auth/login' component={routerProps => <Auth{...routerProps} newUser={newUser}/>}/>
+                {/* <Route exact path ='/auth/login' component={routerProps => <Auth{...routerProps} newUser={newUser}/>}/> */}
                 <Route exact path='/events' component={EventDashboard}/>
                 <Route path='/events/:id' component={EventDetailedPage}/>
                 <Route path='/people' component={PeopleDashboard}/>
