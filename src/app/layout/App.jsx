@@ -12,6 +12,8 @@ import SettingsDashboard from '../../features/user/Settings/SettingsDashboard';
 import UserDetailedPage from '../../features/user/UserDetailed/UserDetailedPage';
 import EventForm from'../../features/event/EventForm/EventForm';
 import TestComponent from '../../features/testArea/TestComponent'
+import API from '../../adapters/API';
+import ModalManager from '../../features/modals/ModalManager';
 
 
 class App extends Component {
@@ -21,7 +23,10 @@ class App extends Component {
       user: []
  }
   
-   
+  
+ componentDidMount() {
+   API.fetchEvents().then(console.log)
+ }
   
 
 
@@ -37,6 +42,7 @@ class App extends Component {
   return (
 
     <Fragment>
+      <ModalManager/>
             <Route exact path='/' component={HomePage}/>
             <Route
              path='/(.+)'

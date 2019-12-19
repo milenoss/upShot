@@ -34,7 +34,15 @@ const login = (userDetails) => fetch(LOGIN_URL,{
 
 
 
+const fetchEvents = () => 
+fetch(EVENTS_URL).then(jsonify)
+
+
+
 export default { 
-    login
+    login,
+    fetchEvents
+
 }
+
 

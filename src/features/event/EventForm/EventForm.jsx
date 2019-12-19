@@ -19,6 +19,9 @@ import  {
   getLatLng
 } from 'react-places-autocomplete';
 
+
+
+
 const mapState = (state, ownProps) => { 
   const eventId = ownProps.match.params.id;
 
