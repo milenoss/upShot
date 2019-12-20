@@ -11,7 +11,7 @@ import cuid from 'cuid';
 // import { TextInput } from '../../../app/common/form/TextInput';
 import { SelectInput } from '../../../app/common/form/SelectInput';
 import { TextArea }from '../../../app/common/form/TextArea';
-import DateInput from '../../../app/common/form/DateInput';
+// import DateInput from '../../../app/common/form/DateInput';
 import PlaceInput from '../../../app/common/form/PlaceInput';
 import TextInput from '../../../app/common/form/TextInput';
 
