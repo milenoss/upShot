@@ -1,21 +1,21 @@
-import React from 'react'
-import {Route} from 'react-router-dom'
-import Login from './Login'
+// import React from 'react'
+// import {Route} from 'react-router-dom'
+// import Login from './Login'
 
 
-const Auth = (props) => { 
-    return (
-        <>
-        <Route path = '/auth/login'>
-            <Login newUser={props.newUser}/>
-            </Route>
+// const Auth = (props) => { 
+//     return (
+//         <>
+//         <Route path = '/auth/login'>
+//             <Login newUser={props.newUser}/>
+//             </Route>
           
    
-        <Route path='/signup'>
-            <div>Signup</div>
-        </Route> 
-        </>
-    )
-}
+//         <Route path='/signup'>
+//             <div>Signup</div>
+//         </Route> 
+//         </>
+//     )
+// }
 
-export default Auth
+// export default Auth

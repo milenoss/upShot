@@ -6,13 +6,13 @@ import {Container} from 'semantic-ui-react';
 import {Route, Switch} from 'react-router-dom';
 import HomePage from '../../features/home/HomePage';
 import EventDetailedPage from '../../features/event/EventDetailed/EventDetailedPage';
-import Auth from '../../features/auth/Auth'
+// import Auth from '../../features/auth/Auth'
 import PeopleDashboard from '../../features/user/PeopleDashboard/PeopleDashboard';
 import SettingsDashboard from '../../features/user/Settings/SettingsDashboard';
 import UserDetailedPage from '../../features/user/UserDetailed/UserDetailedPage';
 import EventForm from'../../features/event/EventForm/EventForm';
 import TestComponent from '../../features/testArea/TestComponent'
-import API from '../../adapters/API';
+// import API from '../../adapters/API';
 import ModalManager from '../../features/modals/ModalManager';
 
 
