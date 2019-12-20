@@ -35,7 +35,7 @@ export const loadEvents = () => {
             dispatch(asyncActionStart())
             const events = await fetchSampleData();
             dispatch({type: FETCH_EVENTS, payload: {events}})
-            dispatch(asyncActionFinish)
+            dispatch(asyncActionFinish())
         }
      catch (error) {
          console.log(error); 
