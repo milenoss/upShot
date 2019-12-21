@@ -11,16 +11,16 @@ import { firebaseReducer } from 'react-redux-firebase';
 import {firestoreReducer} from 'redux-firestore';
 
 const rootReducer = combineReducers({
-    firebase: firebaseReducer,
-    firestore: firestoreReducer,
+    
     form: FormReducer,
     test: testReducer,
     events: eventReducer,
     modals: modalReducer,
     auth: authReducer,
     async: asyncReducer,
-    toastr: ToastrReducer
-
+    toastr: ToastrReducer,
+    firebase: firebaseReducer,
+    firestore: firestoreReducer
 })
 
 export default rootReducer;
