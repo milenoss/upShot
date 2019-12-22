@@ -9,8 +9,8 @@ import {composeValidators, combineValidators, isRequired, hasLengthGreaterThan} 
 import {createEvent, updateEvent} from '../eventAction';
 import cuid from 'cuid';
 // import { TextInput } from '../../../app/common/form/TextInput';
-import { SelectInput } from '../../../app/common/form/SelectInput';
-import { TextArea }from '../../../app/common/form/TextArea';
+import SelectInput from '../../../app/common/form/SelectInput';
+import TextArea from '../../../app/common/form/TextArea';
 // import DateInput from '../../../app/common/form/DateInput';
 import PlaceInput from '../../../app/common/form/PlaceInput';
 import TextInput from '../../../app/common/form/TextInput';
@@ -20,6 +20,7 @@ import  {
   geocodeByAddress,
   getLatLng
 } from 'react-places-autocomplete';
+import DateInput from '../../../app/common/form/DateInput';
 
 
 
@@ -171,9 +172,9 @@ const mapState = (state, ownProps) => {
                        onSelect={this.handleVenueSelect}
                        placeholder='Event Venue'/>
                       <Field 
-                      name='date'
-                      type = 'text'
-                       component={TextInput} ///fixing needed
+                       name='date'
+                       type = 'text'
+                       component={DateInput} ///fixing needed
                        dateFormat= 'dd LLL yyyy h:mm a'
                        showTimeSelect
                        timeFormat = 'HH:mm'

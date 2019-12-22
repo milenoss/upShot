@@ -1,7 +1,7 @@
 import React from 'react'
 import { Form, Label } from 'semantic-ui-react'
 
-export const TextArea = ({
+ const TextArea = ({
      input, rows, width, type, placeholder, meta:{touched, error}
 }) => {
     return (
@@ -11,3 +11,5 @@ export const TextArea = ({
       </Form.Field>
     )
 }
+
+export default TextArea;
