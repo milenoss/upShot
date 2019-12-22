@@ -1,11 +1,12 @@
 import React,{Fragment} from 'react';
-import {Menu, Header} from 'semantic-ui-react';
+import {Menu, Header, Grid} from 'semantic-ui-react';
 import {NavLink} from  'react-router-dom'
 const SettingsNav = () => {
     return (
             <Fragment>
+             <Grid.Column width={4}>
              <Menu vertical>
-               <Header icon="user" attached inverted color="grey" content="Profile" />
+               <Header icon="user" attached inverted color= "grey" content="Profile" />
                <Menu.Item as={NavLink} to='/settings/basics'>
                    Basics
                    </Menu.Item>
@@ -13,7 +14,7 @@ const SettingsNav = () => {
                    About Me
                    </Menu.Item>
                <Menu.Item as= {NavLink} to ='/settings/photos'> 
-               My Photo
+               My Photos
                 </Menu.Item>
              </Menu>
              <Menu vertical>
@@ -24,8 +25,9 @@ const SettingsNav = () => {
                  color="grey"
                  content="Account"
                />
-               <Menu.Item as={NavLink} to='/settings/accounts'>My Account</Menu.Item>
+               <Menu.Item as={NavLink} to='/settings/account'>My Account</Menu.Item>
              </Menu>
+             </Grid.Column>
            </Fragment>
 
     )

@@ -1,18 +1,19 @@
 import React from 'react';
-import { Form, Segment, Button, Label } from 'semantic-ui-react';
+import { Form, Segment, Button, Label, Divider } from 'semantic-ui-react';
 import { Field, reduxForm} from 'redux-form';
 import TextInput from '../../../app/common/form/TextInput';
-import {login} from '../authActions'
+import {login, socialLogin } from '../authActions'
 import {connect} from 'react-redux'
-
+import SocialLogin from '../SocialLogin/SocialLogin'
 
 
 const actions = { 
-  login 
+  login ,
+  socialLogin
 }
 //handleSubmit comes with the redux form you just pass it as props
 
-const LoginForm = ({login, handleSubmit, error}) => {
+const LoginForm = ({login, handleSubmit, error, socialLogin}) => {
   return (
     <Form size="large" onSubmit={handleSubmit(login)} autoComplete = 'off' >
       <Segment>
@@ -32,6 +33,12 @@ const LoginForm = ({login, handleSubmit, error}) => {
         <Button fluid size="large" color="teal">
           Login
         </Button>
+         <Divider horizontal>
+           Or
+         </Divider>
+         <SocialLogin socialLogin={socialLogin}>
+           
+         </SocialLogin>
       </Segment>
     </Form>
   );
