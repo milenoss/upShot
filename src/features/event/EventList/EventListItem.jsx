@@ -1,11 +1,11 @@
 import React, { Component } from 'react'
-import {Segment, Item, Icon, List, Button} from 'semantic-ui-react';
+import {Segment, Item, Icon, List, Button, Label} from 'semantic-ui-react';
 import EventListAttendee from './EventListAttendee';
 import { Link } from 'react-router-dom';
 import {format } from 'date-fns'
  class EventListItem extends Component {
     render() {
-        const {event, deleteEvent}= this.props;
+        const {event}= this.props;
         return (
                <Segment.Group>
                   <Segment>
@@ -17,6 +17,10 @@ import {format } from 'date-fns'
                           <Item.Description>
                             Hosted by {event.hostedBy}
                           </Item.Description>
+                          {event.cancelled &&
+                          <Label style={{top: '-40px'}} ribbon='right' color='red' content='This event has been cancelled'/>}
+                        
+                        
                         </Item.Content>
                       </Item>
                     </Item.Group>
@@ -40,12 +44,7 @@ import {format } from 'date-fns'
                     </List>
                   </Segment>
                   <Segment clearing>
-                  <Button 
-                    onClick={()=> deleteEvent(event.id)} 
-                    as="a" 
-                    color="red" 
-                    floated="right" 
-                    content="Delete" />
+                
 
                       <span>{event.description}</span>
                     <Button 

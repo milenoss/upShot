@@ -3,7 +3,7 @@ import { Grid } from 'semantic-ui-react'
 import EventList from '../EventList/EventList';
 
 import {connect} from 'react-redux';
-import {createEvent, deleteEvent, updateEvent} from '../eventAction'
+import {createEvent, updateEvent} from '../eventAction'
 import LoadingComponent from '../../../app/layout/LoadingComponent';
 import EventActivity from '../EventActivity/EventActivity';
 
@@ -16,7 +16,7 @@ const mapStateToProps = (state) => ({
 
 const actions = { 
   createEvent, 
-  deleteEvent, 
+  
   updateEvent
 }
 class EventDashboard extends Component {
@@ -30,7 +30,7 @@ class EventDashboard extends Component {
         return (
             <Grid>
                 <Grid.Column width={10}>
-                 <EventList events={events} deleteEvent={this.handleDeleteEvent}/>
+                 <EventList events={events} />
                  </Grid.Column>
                  <Grid.Column width={6}>
                  <EventActivity/>

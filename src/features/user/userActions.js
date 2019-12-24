@@ -14,8 +14,8 @@ async ( dispatch, getState, {getFirebase})=> {
     }
 }
 
-export const uploadProfileImage = (file, fileName) => (
-    async (dispatch, getState, {getFirebase, getFirestore}) => { 
+export const uploadProfileImage = (file, fileName) => 
+      async (dispatch, getState, {getFirebase, getFirestore }) => { 
         const firebase = getFirebase(); 
         const firestore = getFirestore(); 
         const user = firebase.auth().currentUser; 
@@ -26,11 +26,13 @@ export const uploadProfileImage = (file, fileName) => (
         };
         try { 
 
-            dispatch(asyncActionStart())
+            dispatch(asyncActionStart());
             //upload the file to firebase storage
             let uploadedFile = await firebase.uploadFile(path, file, null, options)
             //get url of image
+           
             let downloadURL = await uploadedFile.uploadTaskSnapshot.ref.getDownloadURL();
+
             // get userdoc 
             let userDoc = await firestore.get(`users/${user.uid}`)
             // check if user has photo, if not update profile
@@ -60,4 +62,53 @@ export const uploadProfileImage = (file, fileName) => (
         }
 
     }
-)
+
+export const goingToEvent = (event) => 
+async (dispatch, getState, {getFirebase, getFirestore}) => { 
+    const firestore = getFirestore(); 
+    const firebase = getFirebase();
+    const user = firebase.auth().currentUser;
+    const profile = getState().firebase.profile;
+    const attendee = { 
+        going: true,
+        joinDate: firestore.FieldValue.serverTimestamp(),
+        photoURL: profile.photoURL || '/assets/user.png',
+        displayName: profile.displayName,
+        host: false
+
+    }
+    try { 
+        await firestore.update(`events/${event.id}`, { 
+            [`attendees.${user.uid}`]:attendee
+        })
+        await firestore.set(`event_attendee/${event.id}_${user.uid}`,{
+            eventId: event.id,
+            userUid: user.uid,
+            eventDate: event.date,
+            host: false
+        })
+        toastr.success('Success', 'You have signed up to the event')
+
+    } catch(error) { 
+        console.log(error)
+        toastr.error('Oops', 'Problem signing up to the event')
+    }
+}
+
+export const cancelGoingToEvent = (event) => 
+async (dispatch, getState, { getFirestore, getFirebase}) => {
+    const firestore = getFirestore(); 
+    const firebase = getFirebase();
+    const  user = firebase.auth().currentUser;
+    try { 
+        await firestore.update(`events/${event.id}`, { 
+            [`attendees.${user.uid}`] : firestore.FieldValue.delete()
+        })
+        await firestore.delete(`event_attendees/${event.id}_${user.uid}`)
+        toastr.success('Success', 'You have removed yourself from the event')
+    } catch(error) { 
+        console.log(error);
+        toastr.error('Oops', 'Something went wrong')
+    }
+
+}

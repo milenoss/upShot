@@ -16,6 +16,7 @@
     "react-dropzone": "^10.1.5",
     "react-infinite-scroller": "^1.2.4",
     "react-lazyload": "^2.5.0",
+    "react-native-fetch-blob": "^0.10.3-beta.1",
     "react-places-autocomplete": "^7.2.1",
     "react-redux": "^5.1.1",
     "react-redux-firebase": "^2.2.6",
