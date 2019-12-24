@@ -7,11 +7,11 @@ import {createEvent, updateEvent} from '../eventAction'
 import LoadingComponent from '../../../app/layout/LoadingComponent';
 import EventActivity from '../EventActivity/EventActivity';
 
-import {firestoreConnect} from 'react-redux-firebase';
+import {firestoreConnect, isLoaded} from 'react-redux-firebase';
  
 const mapStateToProps = (state) => ({
   events: state.firestore.ordered.events,
-  loading: state.async.loading
+  
 })
 
 const actions = { 
@@ -25,8 +25,8 @@ class EventDashboard extends Component {
       this.props.deleteEvent(id);
     }
     render() {
-        const {events, loading} = this.props
-        if (loading) return < LoadingComponent/>
+        const {events} = this.props
+        if (!isLoaded(events)) return < LoadingComponent/>
         return (
             <Grid>
                 <Grid.Column width={10}>
