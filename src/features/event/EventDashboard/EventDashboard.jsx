@@ -3,30 +3,30 @@ import { Grid } from 'semantic-ui-react'
 import EventList from '../EventList/EventList';
 
 import {connect} from 'react-redux';
-import {createEvent, updateEvent} from '../eventAction'
+import {getEventsForDashboard} from '../eventAction'
 import LoadingComponent from '../../../app/layout/LoadingComponent';
 import EventActivity from '../EventActivity/EventActivity';
 
-import {firestoreConnect, isLoaded} from 'react-redux-firebase';
+import {firestoreConnect} from 'react-redux-firebase';
  
 const mapStateToProps = (state) => ({
-  events: state.firestore.ordered.events,
+  events: state.events, 
+  loading: state.async.loading
   
 })
 
 const actions = { 
-  createEvent, 
-  
-  updateEvent
+  getEventsForDashboard
 }
 class EventDashboard extends Component {
 
-    handleDeleteEvent = (id) => { 
-      this.props.deleteEvent(id);
-    }
+  componentDidMount() { 
+    this.props.getEventsForDashboard();
+  }
+
     render() {
-        const {events} = this.props
-        if (!isLoaded(events)) return < LoadingComponent/>
+        const {events, loading} = this.props
+        if (loading) return < LoadingComponent/>
         return (
             <Grid>
                 <Grid.Column width={10}>

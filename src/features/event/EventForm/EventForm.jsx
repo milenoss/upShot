@@ -16,7 +16,6 @@ import  {
   getLatLng
 } from 'react-places-autocomplete';
 import DateInput from '../../../app/common/form/DateInput';
-import { toastr } from 'react-redux-toastr';
 import {withFirestore} from 'react-redux-firebase';
 
 
