@@ -1,6 +1,6 @@
 import { toastr } from "react-redux-toastr";
 import { asyncActionStart, asyncActionFinish, asyncActionError } from "../async/asyncActions";
-
+import cuid from 'cuid'
 export const updateProfile = (user) => 
 async ( dispatch, getState, {getFirebase})=> {
     const firebase = getFirebase();
@@ -16,12 +16,13 @@ async ( dispatch, getState, {getFirebase})=> {
 
 export const uploadProfileImage = (file, fileName) => 
       async (dispatch, getState, {getFirebase, getFirestore }) => { 
+        const imageName = cuid();
         const firebase = getFirebase(); 
         const firestore = getFirestore(); 
         const user = firebase.auth().currentUser; 
         const path = `${user.uid}/user_images`;
         const options = { 
-            name: fileName
+            name: imageName
         
         };
         try { 
@@ -51,7 +52,7 @@ export const uploadProfileImage = (file, fileName) =>
                 doc: user.uid, 
                 subcollections: [{collection: 'photos'}]
             },{
-                name: fileName, 
+                name: imageName, 
                 url: downloadURL
             })
             dispatch(asyncActionFinish())
@@ -111,4 +112,37 @@ async (dispatch, getState, { getFirestore, getFirebase}) => {
         toastr.error('Oops', 'Something went wrong')
     }
 
+}
+
+export const deletePhoto =(photo) =>
+async (dispatch, getState, {getFirebase, getFirestore}) => { 
+    const firebase = getFirebase(); 
+    const firestore = getFirestore(); 
+    const user = firebase.auth().currentUser; 
+    try { 
+        await firebase.deleteFile(`${user.uid}/user_images/${photo.name}`);
+        await firestore.delete({
+            collection: 'users',
+            doc: user.uid, 
+            subcollection: [{collection: 'photos', doc: photo.id}]
+        })
+    } catch (error){ 
+        console.log(error);
+        throw  new Error('Problem deleting the photo')
+    }
+}
+
+export const setMainPhoto = photo => 
+async (dispatch, getstate, {getFirebase}) => { 
+    const firebase = getFirebase()
+    try { 
+        return await firebase.updateProfile({
+            photoURL: photo.url
+
+        })
+    } catch (error) {
+        console.log(error);
+        throw new Error('Problem setting main photo')
+
+    }
 }
