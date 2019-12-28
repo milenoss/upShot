@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 
 
 const EventDetailedSidebar =({attendees}) => {
-    const isHost = false;
+    
     return (
        <Fragment>
          
@@ -25,7 +25,7 @@ const EventDetailedSidebar =({attendees}) => {
                     attendees.map((attendee) => (
                          //debugger
                              <Item key={attendee.id} style={{ position: 'relative' }}>
-                             {isHost &&
+                             {attendee.host &&
                              <Label
                                style={{ position: 'absolute' }}
                                color='blue'

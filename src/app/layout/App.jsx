@@ -15,6 +15,7 @@ import TestComponent from '../../features/testArea/TestComponent'
 // import API from '../../adapters/API';
 import ModalManager from '../../features/modals/ModalManager';
 import {UserIsAuthenticated} from '../../features/auth1/authWrapper';
+import NotFound from './NotFound';
 
 class App extends Component {
 
@@ -41,6 +42,7 @@ class App extends Component {
                 <Route path='/settings' component={UserIsAuthenticated(SettingsDashboard)}/>
                 <Route path={['/createEvent', '/manage/:id' ]} component={UserIsAuthenticated(EventForm)}/>
                 <Route path='/test' component={TestComponent}/>
+                <Route component={NotFound}/>
           
                 </Switch>
               </Container>

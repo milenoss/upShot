@@ -11,6 +11,8 @@ import { objectToArray, createDataTree} from '../../../app/common/helpers';
 import {goingToEvent, cancelGoingToEvent} from '../../user/userActions'
 import { addEventComment } from'../eventAction';
 import {openModal} from'../../modals/modalActions'
+import LoadingComponent from '../../../app/layout/LoadingComponent';
+import NotFound from '../../../app/layout/NotFound'
 
 const mapState = (state, ownProps) => { 
     const eventId = ownProps.match.params.id;
@@ -23,9 +25,10 @@ const mapState = (state, ownProps) => {
     }
     return { 
         event,
+        requesting: state.firestore.status.requesting,
         auth: state.firebase.auth,
         eventChat: !isEmpty(state.firebase.data.event_chat) &&
-         objectToArray(state.firebase.data.event_chat[ownProps.match.params.id])
+        objectToArray(state.firebase.data.event_chat[ownProps.match.params.id])
     }
 }
 
@@ -34,7 +37,8 @@ const actions = {
     goingToEvent, 
     cancelGoingToEvent,
     addEventComment,
-    openModal
+    openModal,
+ 
 
 }
 
@@ -53,17 +57,25 @@ class EventDetailedPage extends Component {
     render() {
         const {
             openModal,
+            match,
+            requesting,
              event,
               auth, 
               goingToEvent, 
               cancelGoingToEvent, 
               addEventComment, 
               eventChat} = this.props;
-        const attendees = event && event.attendees && objectToArray(event.attendees);
+        const attendees = event && event.attendees && objectToArray(event.attendees).sort((a,b)=> {
+            return a.joinDate.toDate() - b.joinDate.toDate()
+        });
         const isHost = event.hostUid === auth.uid;
         const isGoing = attendees && attendees.some(a => a.id === auth.uid);
         const chatTree = !isEmpty(eventChat) && createDataTree(eventChat);
         const authenticated = auth.isLoaded && !auth.isEmpty;
+        const loadingEvent = requesting[`events/${match.params.id}`]
+
+        if(loadingEvent) return <LoadingComponent/>
+        if(Object.keys(event).length === 0) return <NotFound/>
     return (
         <Grid>
         
