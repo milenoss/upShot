@@ -9,7 +9,8 @@ import { withFirestore, firebaseConnect, isEmpty } from 'react-redux-firebase';
 import {compose} from 'redux';
 import { objectToArray, createDataTree} from '../../../app/common/helpers';
 import {goingToEvent, cancelGoingToEvent} from '../../user/userActions'
-import { addEventComment } from'../eventAction'
+import { addEventComment } from'../eventAction';
+import {openModal} from'../../modals/modalActions'
 
 const mapState = (state, ownProps) => { 
     const eventId = ownProps.match.params.id;
@@ -32,7 +33,8 @@ const mapState = (state, ownProps) => {
 const actions = {
     goingToEvent, 
     cancelGoingToEvent,
-    addEventComment
+    addEventComment,
+    openModal
 
 }
 
@@ -49,11 +51,19 @@ class EventDetailedPage extends Component {
     }
     
     render() {
-        const {event, auth, goingToEvent, cancelGoingToEvent, addEventComment, eventChat} = this.props;
-        const attendees = event && event.attendees && objectToArray(event.attendees)
+        const {
+            openModal,
+             event,
+              auth, 
+              goingToEvent, 
+              cancelGoingToEvent, 
+              addEventComment, 
+              eventChat} = this.props;
+        const attendees = event && event.attendees && objectToArray(event.attendees);
         const isHost = event.hostUid === auth.uid;
-        const isGoing = attendees && attendees.some(a => a.id === auth.uid)
-        const chatTree = !isEmpty(eventChat) && createDataTree(eventChat)
+        const isGoing = attendees && attendees.some(a => a.id === auth.uid);
+        const chatTree = !isEmpty(eventChat) && createDataTree(eventChat);
+        const authenticated = auth.isLoaded && !auth.isEmpty;
     return (
         <Grid>
         
@@ -63,10 +73,18 @@ class EventDetailedPage extends Component {
             isGoing={isGoing}
              isHost={isHost} 
              goingToEvent={goingToEvent}
-             cancelGoingToEvent={cancelGoingToEvent}/> 
+             cancelGoingToEvent={cancelGoingToEvent}
+             authenticated = { authenticated} 
+             openModal = {openModal}
+             /> 
              
             <EventDetailedInfo event={event}/>
-            <EventDetailedComment eventChat={chatTree} addEventComment={addEventComment} eventId={event.id}/>
+            {authenticated &&
+            <EventDetailedComment 
+            eventChat={chatTree} 
+            addEventComment={addEventComment}
+             eventId={event.id}
+             />}
             
 
             </Grid.Column>
