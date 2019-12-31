@@ -116,4 +116,4 @@ class EventDashboard extends Component {
     }
 }
  
-export default connect(mapStateToProps, actions) (firestoreConnect (query)(EventDashboard));
+export default connect(mapStateToProps, actions) (firestoreConnect(query)(EventDashboard));
