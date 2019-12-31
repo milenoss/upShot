@@ -1,68 +1,55 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Project title
+Upshot lets users create and organise events anywhere around the world. It can be useful for small office events and can be used among friends. It will save time from organising it over the phone or a group chat message. It updates on real-time and lets users real-time comments on each others events.
 
-## Available Scripts
+## Motivation
+The motivation behind this project is to demonstrate my understanding and learning in React, Redux, Semantics and using Firebase Cloud.
+The project can be useful for office events or creating family events where all users can see what events are up and can be used efficiently. 
 
-In the project directory, you can run:
+Build status
 
-### `yarn start`
+Code style
+js-standard-style
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Screenshots
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+Include logo/demo screenshot etc.
 
-### `yarn test`
+## Tech/framework used
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Built with
+React-Redux
+Semanti-Ui
+Ruby on Rails
+Firestore/Firebase database
+Firebase cloud.
 
-### `yarn build`
+## Features
+What makes your project stand out?
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Things you can do
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+User can create, cancel, update and manage events.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+User can create profile and upload photos. 
 
-### `yarn eject`
+User can login via google or facebook. 
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+User can see recent activity of creation or deletion of events.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+User can organise event anywhere in the world with google map api.
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+## Full Video 
+https://youtu.be/aHa_yXub630
 
-## Learn More
+## Use case 
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+![alt]https://gfycat.com/hauntingleftaustraliankelpie
 
-To learn React, check out the [React documentation](https://reactjs.org/).
 
-### Code Splitting
+## How to use?
+User should clone the repo or fork the upshot-frontend to their local enviorment separately.  Enter command npm install, npm start. You should have node installed for this app. 
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
 
-### Analyzing the Bundle Size
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
 
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `yarn build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
